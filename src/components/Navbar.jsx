@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { UserAuth } from "../contact/AuthContext";
 
 const Navbar = () => {
+  const { user, logOut } = UserAuth()
+  console.log(user)
+
+
+
   return (
     <div className="flex justify-between items-center p-4 z-[100] w-full absolute">
       <Link to='/'>

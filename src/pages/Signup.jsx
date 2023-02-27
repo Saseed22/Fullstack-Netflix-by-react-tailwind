@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { UserAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../contact/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-    const { user, signUp } = UserAuth();
-    const navigate=useState()
+  const { user, signUp } = UserAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        await signUp(email, password);
-        navigate('/')
+      await signUp(email, password);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -62,10 +62,9 @@ const SignUp = () => {
                 </div>
                 <p className=" text-gray-500 my-8">
                   Already subscribed to Netflix?
-                  <a href="/Signin" className="text-white">
-                    {" "}
-                    Sign In
-                  </a>
+                  <span className="text-white">
+                    <Link to="/signin"> Sign In</Link>
+                  </span>
                 </p>
               </form>
             </div>
