@@ -2,9 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AuthContextProvider } from "./contact/AuthContext";
 import Home from "./pages/Home";
-import SignIn from "./pages/Signin";
-import SignUp from "./pages/Signup";
+import Login from "./pages/Signin";
+import Signup from "./pages/Signup";
 import Account from "./pages/Account";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -13,9 +14,16 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route
+            path='/account'
+            element={
+              <ProtectedRoute>
+                <Account />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </AuthContextProvider>
     </>
